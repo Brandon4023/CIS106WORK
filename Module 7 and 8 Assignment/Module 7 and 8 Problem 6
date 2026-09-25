@@ -1,0 +1,23 @@
+student_count = 0
+
+user_response = input("Do you want to run this program? (Yes/No): ").strip().lower()
+
+while user_response in ["yes", "y"]:
+
+    last_name = input("Enter student last name: ").strip()
+    exam1= float(input("Enter Exam 1 score: "))
+    exam2 = float(input("Enter Exam 2 score: "))
+
+    average = (exam1 + exam2) / 2
+
+    print(f"\nStudent: {last_name}")
+    print(f"Average Score: {average:.2f}")
+
+    student_count += 1
+
+    print("-" * 35)
+    user_response = input("Do you want to enter another student? (Yes/No): ").strip().lower()
+
+    print("\n" + "=" * 35)
+    print(f"Total Students Processed: {student_count}")
+    print ("Program has ended. Thank you for using the program.")
