@@ -1,0 +1,15 @@
+Widget
+20
+100
+Hammer
+4
+20
+Saw
+2
+5
+Screwdriver
+10
+20
+Wrench
+15
+30

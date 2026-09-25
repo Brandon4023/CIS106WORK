@@ -1,0 +1,10 @@
+Brandon
+150,000
+Joel
+80,000
+John
+30,000
+Nick
+60,000
+Jaden
+49,000
