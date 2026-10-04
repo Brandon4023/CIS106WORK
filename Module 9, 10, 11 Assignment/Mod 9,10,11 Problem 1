@@ -1,0 +1,49 @@
+# Quantity And Price Total With Discount
+
+
+def calculate_total(qty, unit_price):
+    """Computes total cost and applies a 10% discount if over $100,000.00"""
+    raw_total = qty * unit_price
+
+    # Apply 10% discount if the total exceeds $100,000.00
+    if raw_total > 100000.00:
+        ext_price = raw_total * 0.90
+    else:
+        ext_price = raw_total
+
+    return ext_price
+
+
+def main():
+    total_exit_price = 0.0
+
+
+    # Prompt before loop
+    user_response = input("Do you want to run this program? (Yes/No): ").strip().lower()
+
+    while user_response in ["yes", "y"]:
+        qty = int(input("Enter quantity: "))
+        price = float(input("Enter unit price: "))
+        # Call function to calculate total price
+        
+        ext_price = calculate_total(qty, price)
+        # Accumulate total extended price 
+        
+        total_exit_price += ext_price
+
+        # Display item summary
+        print(f"Quantity: {qty}")
+        print(f"Unit Price: ${price:.2f}")
+        print(f"Extended Price: ${ext_price:.2f}")
+
+        print("-" * 35)
+        user_response = input("Do you want to enter another item? (Yes/No): ").strip().lower()
+
+    # Final output
+    print("\n" + "=" * 35)
+    print(f"Total Extended Price for all items: ${total_exit_price:.2f}")
+    print("Program has ended.")
+
+
+if __name__ == "__main__":
+    main()
