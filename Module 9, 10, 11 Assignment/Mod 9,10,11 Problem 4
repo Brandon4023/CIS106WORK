@@ -1,0 +1,69 @@
+# Vehicle Out The Door Price
+
+
+def compute_out_the_door_price(msrp, make, model, ev_code):
+    """Calculates discount based on vehicle details, applies 7% sales tax, and returns the final out the door price."""
+
+    make_clean = make.strip().capitalize()
+    model_clean = model.strip().capitalize()
+    ev_code_clean = ev_code.strip().upper()
+
+    # Determine discount based on vehicle details
+    if ev_code_clean == "Y":
+        discount = 0.30
+    elif make_clean == "Honda" and model_clean == "Accord":
+        discount = 0.10
+    elif make_clean == "Toyota" and model_clean == "Rav4":
+        discount = 0.15
+    else:
+        discount = 0.05
+
+    # Calculate discounted price
+    discount_amount = msrp * discount
+    discounted_msrp = msrp - discount_amount
+    sales_tax = discounted_msrp * 0.07
+    out_the_door_price = discounted_msrp + sales_tax
+
+    return out_the_door_price, discount
+
+
+def main():
+    total_msrp_sum = 0.0
+    total_out_the_door_sum = 0.0
+
+    print("=== Vehicle Out The Door Price Calculator ===")
+    user_response = input("Do you want to enter a vehicle? (Yes/No): ").strip().lower()
+
+    while user_response in ["yes", "y"]:
+        make = input("Enter vehicle make: ").strip()
+        model = input("Enter vehicle model: ").strip()
+        msrp = float(input("Enter vehicle MSRP: $"))
+        ev_code = input("Is this an electric vehicle? (Y/N): ").strip()
+
+        # Compute out the door price
+        total_out_the_door_price, discount_percent = compute_out_the_door_price(msrp, make, model, ev_code)
+
+        # Accumulate totals
+        total_msrp_sum += msrp
+        total_out_the_door_sum += total_out_the_door_price
+
+        # Display vehicle summary
+        print(f"Vehicle: {make} {model}")
+        print(f"MSRP: ${msrp:.2f}")
+        print(f"Discount Applied: {discount_percent * 100:.0f}%")
+        print(f"Out The Door Price: ${total_out_the_door_price:.2f}")
+        print("-" * 45)
+        user_response = input("Do you want to enter another vehicle? (Yes/No): ").strip().lower()
+
+    print("\n" + "=" * 45)
+    print("=== Summary Totals ===")
+    print(f"Total MSRP for all vehicles: ${total_msrp_sum:.2f}")
+    print(f"Total Out The Door Price for all vehicles: ${total_out_the_door_sum:.2f}")
+    print("Program has ended.")
+
+
+if __name__ == "__main__":
+    main()
+
+   
+    

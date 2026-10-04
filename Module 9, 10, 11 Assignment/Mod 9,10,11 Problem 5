@@ -1,0 +1,22 @@
+#Quantity, Price and Discount
+
+def compute_discount(quantity, price, discount_rate):
+    total_price = quantity * price
+    discount_amount = total_price * (discount_rate / 100)
+    discounted_price = total_price - discount_amount
+
+    return discounted_price, discount_amount
+
+#Get user input for quantity, price, and discount rate
+quantity = int(input("Enter quantity: "))
+price = float(input("Enter unit price: $"))
+discount_rate = float(input("Enter discount rate (as a percentage): "))
+
+# Call function to compute discounted price and discount amount
+discounted_price, discount_amount = compute_discount(quantity, price, discount_rate)
+
+# Display results
+print("\nQuantity:", quantity)
+print("Unit Price: $", format(price, ".2f"))
+print("Discount Amount: $", format(discount_amount, ".2f"))
+print("Discounted Price: $", format(discounted_price, ".2f"))
