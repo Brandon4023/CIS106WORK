@@ -1,0 +1,42 @@
+def display_grades_and_average(student_dict):
+    print(f"\n{'Student Name':<15}{'Grade':<10}")
+    print("-" * 26)
+
+    total_grade = 0.0
+    student_count = 0
+
+    for name, grade in student_dict.items():
+        print(f"{name:<15}{grade:<10.2f}")
+        total_grade += grade
+        student_count += 1
+
+    print("-" * 26)
+
+    # Calculate the class average
+    if student_count > 0:
+        average = total_grade / student_count
+        print(f"{'Average':<15}{average:<10.2f}")
+    else:
+        print("No students found.")
+
+#Dictionary of student names and grades
+def main():
+    student_grades = {
+        "Larsen": 88.5,
+        "Smith": 92.0,
+        "Johnson": 79.5,
+        "Williams": 85.0,
+        "Brown": 90.0,
+        "Jones": 95.5,
+        "Davis": 82.0,
+        "Miller": 87.5,
+        "Wilson": 91.0,
+        "Moore": 89.0
+    }
+
+    # Display the student grades and class average
+    display_grades_and_average(student_grades)
+
+
+if __name__ == "__main__":
+    main()

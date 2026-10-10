@@ -1,0 +1,76 @@
+def find_high_low_scores(names_array, scores_array):
+    length = 0
+    for _ in scores_array:
+        length += 1
+
+    if length == 0:
+        print("\n--- High and Low Exam Scores ---")
+        print("No scores available.")
+        return
+
+    high_var = scores_array[0]
+    high_index = 0
+
+    low_var = scores_array[0]
+    low_index = 0
+
+    i = 1
+    while i < length:
+        current_score = scores_array[i]
+
+        if current_score > high_var:
+            high_var = current_score
+            high_index = i
+
+        if current_score < low_var:
+            low_var = current_score
+            low_index = i
+
+        i += 1
+
+    print("\n--- High and Low Exam Scores ---")
+    print(f"Highest Score: {high_var} by {names_array[high_index]}")
+    print(f"Lowest Score: {low_var} by {names_array[low_index]}")
+
+
+def main():
+    last_names = []
+    exam_scores = []
+    file_name = "LastNamesWithScores.txt"
+
+    # Read last names and exam scores from the file
+    try:
+        with open(file_name, "r") as file:
+            for line in file:
+                parts = line.strip().split()
+
+                parts_count = 0
+                for _ in parts:
+                    parts_count += 1
+
+                if parts_count >= 2:
+                    last_names.append(parts[0])
+                    exam_scores.append(float(parts[1]))
+    except FileNotFoundError:
+        print(f"File {file_name} not found.")
+        return
+
+    total_students = 0
+    for _ in last_names:
+        total_students += 1
+
+    # Display the student data
+    print("\n--- Student Results ---")
+    i = 0
+    while i < total_students:
+        print(f"Index {i}: Name: {last_names[i]:<12}, Exam Score: {exam_scores[i]}")
+        i += 1
+
+    # Custom function to display high and low exam scores
+    find_high_low_scores(last_names, exam_scores)
+
+
+if __name__ == "__main__":
+    main()
+
+

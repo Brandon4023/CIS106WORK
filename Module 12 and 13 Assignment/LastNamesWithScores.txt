@@ -1,0 +1,10 @@
+Larsen 90
+Jordan 71
+Williams 87
+Smith 85
+Johnson 95
+Brown 100
+Jones 81
+Miller 50
+Davis  75
+Garcia 83

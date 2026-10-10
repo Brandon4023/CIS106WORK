@@ -1,0 +1,48 @@
+def display_player_averages(players_dict):
+    print("\n" + "=" * 32)
+    print(f"{'Player Name':<18} {'Batting Average':<12}")
+    print("=" * 32)
+
+    for name, avg in players_dict.items():
+        print(f"{name:<18} {avg:<12.3f}")
+
+    print("=" * 32)
+
+
+def load_players_from_txtfile(filename):
+    players_dict = {}
+
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                parts = line.strip().replace(",", " ").split()
+                parts_count = 0
+                for _ in parts:
+                    parts_count += 1
+#This make's sure that the line has a name and batting average before it processes
+                if parts_count >= 2:
+                    name = parts[0]
+                    avg = float(parts[1])
+                    players_dict[name] = avg
+    except FileNotFoundError:
+        print(f"Error: file '{filename}' not found.")
+    except ValueError:
+        print(f"Error: invalid batting average value in '{filename}'.")
+
+    return players_dict
+#List with player's last name's and batting average
+def main(): 
+    file_name = "PlayerNamesWithBattingAverages.txt"
+
+    players_dict = load_players_from_txtfile(file_name)
+
+    has_players = False
+    for _ in players_dict:
+        has_players = True
+        break
+#Display's report only if the data in the file is valid
+    if has_players:
+        display_player_averages(players_dict)
+
+if __name__ == "__main__":
+    main()

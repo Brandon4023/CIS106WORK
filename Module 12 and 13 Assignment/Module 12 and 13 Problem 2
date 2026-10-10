@@ -1,0 +1,48 @@
+def display_student_data(names_array, examscores_array):
+    print("\nStudent Exam Score's Results")
+    length = 0
+    for _ in names_array:
+        length += 1
+    i = 0
+    while i < length:
+        print(f"Index {i} | Name: {names_array[i]:<12} | Exam Score: {examscores_array[i]:.2f}")
+        i += 1
+
+
+def display_student_data_reverse(names_array, examscores_array):
+    print("\nStudent Exam Score's Results (Reverse)")
+    length = 0
+    for _ in names_array:
+        length += 1
+    i = length - 1
+    while i >= 0:
+        print(f"Index {i} | Name: {names_array[i]:<12} | Exam Score: {examscores_array[i]:.2f}")
+        i -= 1
+
+
+def main():
+    last_names = []
+    exam_scores = []
+    file_name = "LastNamesWithScores.txt"
+# Reads from the LastNamesWithScore file into parallel arrays
+    try:
+        with open(file_name, "r") as file:
+            for line in file:
+                parts = line.strip().replace(",", " ").split()
+                parts_count = 0
+                for _ in parts:
+                    parts_count += 1
+
+                if parts_count >= 2:
+                    last_names.append(parts[0])
+                    exam_scores.append(float(parts[1]))
+    except FileNotFoundError:
+        print(f"Error: File '{file_name}' was not found.")
+        return
+# Custom Functions
+    display_student_data(last_names, exam_scores)
+    display_student_data_reverse(last_names, exam_scores)
+
+
+if __name__ == "__main__":
+    main()
