@@ -1,0 +1,36 @@
+class Student:
+    def __init__(self, first, last, district_code, enrolled_credits):
+        self.first = first
+        self.last = last
+        self.district_code = district_code
+        self.enrolled_credits = enrolled_credits
+
+    #In district students with (I) have to pay $250 per credit hour
+    #Out of district students with anything other then an (I) have to pay $500 per credit hour
+    def compute_tuition(self):
+        if self.district_code.upper() == 'I':
+            rate = 250.00
+        else:
+            rate = 500.00
+
+        tuition = float(self.enrolled_credits) * rate
+        return tuition
+
+    #main execution begins here
+student1 = Student('Brandon', 'Larsen', 'I', 15)
+
+#with in district student
+
+print(f"Student: {student1.first} {student1.last}")
+print(f"District code: {student1.district_code}")
+print(f"Enrolled credits: {student1.enrolled_credits}")
+print(f"Tuition owed: ${student1.compute_tuition():,.2f}\n")
+
+# With out of district student
+
+student2 = Student('Caleb', 'Williams', 'O', 15)
+
+print(f"Student: {student2.first} {student2.last}")
+print(f"District code: {student2.district_code}")
+print(f"Enrolled credits: {student2.enrolled_credits}")
+print(f"Tuition owed: ${student2.compute_tuition():,.2f}\n")

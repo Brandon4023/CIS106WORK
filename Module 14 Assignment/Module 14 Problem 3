@@ -1,0 +1,40 @@
+
+class Student:
+    #Dictionary mapping district codes that translates to cost per credit hour
+    tuition_rates = {
+        'I': 250.00,
+        'O': 500.00,
+        'X': 800.00,
+        'G': 250.00,
+    }
+
+    def __init__(self, first, last, district_code, enrolled_credits):
+        self.first = first
+        self.last = last
+        #This will convert to uppercase to ensure the dictionary lookup works
+        self.district_code = district_code.upper()
+        self.enrolled_credits = enrolled_credits
+
+    def compute_tuition(self):
+
+        rate = self.tuition_rates.get(self.district_code, 500.00)
+        tuition = float(self.enrolled_credits) * rate
+        return tuition
+
+#main execution begins here
+
+
+student_i = Student('Brandon', 'Larsen', 'I', 15)
+student_o = Student('Caleb' , 'Williams', 'O', 15)
+student_x = Student('Derrick', 'Rose', 'X', 9)
+student_g = Student('Caleb', 'Wilson', 'G', 12)
+
+#this will put them in a list to loop and this will display results
+all_students = [student_i, student_o, student_x, student_g]
+
+for s in all_students:
+    print(f"Student: {s.first} {s.last}")
+    print(f"District code: {s.district_code}")
+    print(f" Enrolled credits: {s.enrolled_credits}")
+    print(f"Tuition owed: ${s.compute_tuition():,.2f}")
+    print("-" * 30)
